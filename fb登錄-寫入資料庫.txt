@@ -126,7 +126,7 @@ module.exports = app;
 
 
 -------------------------------------------------------------
-Android部分
+Express部份
 (2)<routes>中, register.js
 -------------------------------------------------------------
 var express = require('express');
@@ -520,6 +520,7 @@ public class MainActivity extends AppCompatActivity {
 
         //------------------------------------------------------
         FacebookSdk.sdkInitialize(getApplicationContext());
+	AppEventsLogger.activateApp(this);
         //------------------------------------------------------
 
         context=this;
