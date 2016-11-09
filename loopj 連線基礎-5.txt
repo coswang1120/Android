@@ -1,0 +1,439 @@
+選擇: Basic Activity
+加入: 在drawable中加入一張圖, 名稱為a.jpg
+效果: 建立一個loopj Asynchronous client, 使用POST傳輸, 上傳圖片及文字內容
+
+
+
+-------------------------------------------------------
+Node.js -> app.js
+-------------------------------------------------------
+var express = require('express');
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
+
+var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+
+//*******************************************************************
+app.use(bodyParser.urlencoded({ limit:'10mb', extended: true }));
+//*******************************************************************
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/users', users);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
+
+module.exports = app;
+
+
+
+
+-------------------------------------------------------
+Node.js -> index.js
+加載multer外掛: npm install multer --save
+-------------------------------------------------------
+var express = require('express');
+var router = express.Router();
+
+//再引用multer外掛, 
+var multer  = require('multer');
+
+//宣告上傳存放空間及檔名更改
+var storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, 'public\\uploads');
+	},
+	filename: function (req, file, cb) {
+		var fileName = Date.now() + ".jpg";
+		cb(null, fileName);
+	}
+})
+
+//使用multer上傳物件
+var upload = multer({ storage: storage })
+
+  
+/* POST home page. */
+router.post('/', upload.single('picture'),function(req, res, next) {
+	console.log("圖片檔名:"+req.file.filename);
+	console.log("發文:"+req.body.message);
+	
+    res.send("POST response");
+});
+
+module.exports = router;
+
+
+
+
+-------------------------------------------------------
+gradle
+-------------------------------------------------------
+compile 'com.loopj.android:android-async-http:1.4.9'
+
+
+-------------------------------------------------------
+AndroidManifest.xml
+-------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.abc.myapplication" >
+
+    <!-- .................... -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- .................... -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+
+
+
+-------------------------------------------------------
+content_main.xml
+-------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.abc.myapplication.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="選擇圖片"
+                    android:id="@+id/select_file_btn" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="清除圖片"
+                    android:id="@+id/clear_file_btn" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/a"
+                android:id="@+id/imageView"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <AutoCompleteTextView
+                    android:id="@+id/msg"
+                    android:hint="發文"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:maxLength="500"
+                    android:maxLines="10"
+                    android:singleLine="false" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+
+
+
+
+
+-------------------------------------------------------
+common -> Global.java
+-------------------------------------------------------
+package com.abc.myapplication.common;
+
+public class Global {
+	// *** 以手機3G測試時, 用虛擬IP位址無法將訊息送達主機 ***
+    public static String url="http://192.168.56.1:3000";
+}
+
+
+
+
+
+-------------------------------------------------------
+MainActivity.java
+-------------------------------------------------------
+package com.abc.myapplication;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.abc.myapplication.common.Global;
+import com.loopj.android.http.*;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import cz.msebera.android.httpclient.Header;
+
+public class MainActivity extends AppCompatActivity {
+    //-----------------------------------------------
+    private int PICK_IMAGE_REQUEST = 1;
+    private Bitmap bitmap;
+    ImageView imageView;
+    TextView textView;
+
+    private Context context=this;
+    private int imageIndex=1;
+
+    String picName="default.jpg";
+    //-----------------------------------------------
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //-----------------------------------------------------------------
+        Button buttonSelect=(Button)findViewById(R.id.select_file_btn);
+        buttonSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageIndex = 1;
+                showFileChooser();
+            }
+        });
+
+        Button buttonClear=(Button)findViewById(R.id.clear_file_btn);
+        buttonClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bitmap=null;
+                imageView.setImageBitmap(null);
+            }
+        });
+
+
+        imageView=(ImageView)findViewById(R.id.imageView);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.a);
+
+        textView=(TextView)findViewById(R.id.msg);
+        //-----------------------------------------------------------------
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //--------------------------------------------------------------------
+                if(bitmap==null){
+                    Toast.makeText(context, "無圖片可上傳", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //.......................................................
+                AsyncHttpClient client1 = new AsyncHttpClient();
+
+                // 計算圖片尺寸, 將過大圖片縮小
+                int w = bitmap.getWidth();
+                int h = bitmap.getHeight();
+                double maxSize = 1000;
+                double r = 1;
+
+                if (w > maxSize) r = maxSize / w;
+                h = (int) (h * r);
+
+                if (h > maxSize) r = r * (maxSize / h);
+
+                Bitmap resizedBitmap1 = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * r), (int) (bitmap.getHeight() * r), true);
+                byte[] imagebyte1 = getStringImage(resizedBitmap1);
+
+                String msg=textView.getText().toString();
+
+                RequestParams params1 = new RequestParams();
+                picName=picName+".jpg";
+                params1.put(
+                    "picture",
+                    new ByteArrayInputStream(imagebyte1),
+                    picName
+                );
+
+                //發文文字內容
+                params1.put("message", msg);
+
+                // *** 以手機測試時, 用虛擬IP位址無法將訊息送達主機 ***
+                client1.post(Global.url, params1, new AsyncHttpResponseHandler() {
+                    ProgressDialog loading;
+
+                    @Override
+                    public void onStart() {
+                        loading = ProgressDialog.show(MainActivity.this, "上傳圖片", "請稍待...", true, true);
+                    }
+
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                        loading.dismiss();
+                        Toast.makeText(context, "上傳成功-1", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                        loading.dismiss();
+                        Toast.makeText(context, "上傳失敗-1", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onRetry(int retryNo) {}
+                });
+                //--------------------------------------------------------------------
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    //-----------------------------------------------------------------------------
+    public byte[] getStringImage(Bitmap bmp){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+
+        return imageBytes;
+    }
+
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "請選擇上傳圖片"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri filePath = data.getData();
+            try {
+                if(imageIndex==1) {
+                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                    imageView.setImageBitmap(bitmap);
+                    picName=filePath.toString();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //-----------------------------------------------------------------------------
+}
