@@ -31,6 +31,9 @@ google-services.json  放在專案內的<app>中
 -------------------------------------------------------------
 
 
+-------------------------------------------------------------
+在 drawable 中增加一個圖片, 名稱是 info
+-------------------------------------------------------------
 
 
 -------------------------------------------------------------
@@ -78,16 +81,6 @@ AndroidMenifest.xml
 
 </manifest>
 
-
-
-
--------------------------------------------------------------
-strings.xml
--------------------------------------------------------------
-<resources>
-    <string name="app_name">MyApp</string>
-    <string name="action_settings">Settings</string>
-</resources>
 
 
 
@@ -368,8 +361,8 @@ var FCM = require('fcm-push');
 
 
 // 在 https://console.firebase.google.com/ 中,
-// 點選已建立之專案, 點選"管理" -> 選 CLOUD MESSAGING -> 內有 "網路 API 金鑰"
-var serverKey = '填入Firebase中專案內的網路 API 金鑰';
+// 點選已建立之專案, 點選 Gear 圖示中的 "專案設定" -> 選上方橫列選單中的 CLOUD MESSAGING -> 內有 "Firebase Cloud Messaging 憑證"
+var serverKey = '貼上 Firebase Cloud Messaging 憑證';
 var fcm = new FCM(serverKey);
 
 
