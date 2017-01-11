@@ -9,6 +9,13 @@
 
 
 
+#####模擬器
+```
+Nexus 5, API 23
+```
+
+
+
 #####建立專案設定
 ```
 (1) Company Domain: abc.com 
