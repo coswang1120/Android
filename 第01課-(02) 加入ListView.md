@@ -32,11 +32,11 @@
    |     |
          |___<layout>
          |      |
-		        |___content_main.xml                				
+                |___content_main.xml                				
 ```
 
 
-#####檔案名稱: colors.xml
+#####檔案名稱: content_main.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -58,7 +58,7 @@
 ```
 
 
-#####檔案名稱: content_main.xml
+#####檔案名稱: MainActivity.java
 ```java
 package com.abc.myapplication;
 
