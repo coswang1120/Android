@@ -12,8 +12,8 @@
 #####建立專案設定
 ```
 (1) Company Domain: abc.com 
-(1) Minimum SDK: API 21: Android 5.0(Lollipop)
-(2) 選用 Basic Activity
+(2) Minimum SDK: API 21: Android 5.0(Lollipop)
+(3) 選用 Basic Activity
 ```
 
 
