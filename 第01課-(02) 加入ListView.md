@@ -1,11 +1,11 @@
 #第01課 介面設計
 
 
-## (2) 加入ListView-1
+## (2) 加入ListView
 
 
 #####執行結果:
-![GitHub Logo](/images/results01-1.jpg)
+![GitHub Logo](/images/results01-2.jpg)
 
 
 
