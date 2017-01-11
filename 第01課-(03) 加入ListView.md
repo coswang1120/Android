@@ -36,7 +36,7 @@
    |     |
          |___<layout>
          |      |
-		            |___content_main.xml                				
+                |___content_main.xml                				
 ```
 
 
