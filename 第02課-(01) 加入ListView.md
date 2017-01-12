@@ -30,7 +30,6 @@ Nexus 5, API 23
  app 
    | 
    |___<java>
-   |     |
    |     |___<com.abc.myapplication>
    |            |___MainActivity.java		 
    |___<res>
