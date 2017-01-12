@@ -104,21 +104,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //-----------------------------------
-        // 將字串陣列內容加入ListView物件中
-        //-----------------------------------
         // 準備一個顯示資料的ListView物件
+        //-----------------------------------        
         ListView listView=(ListView)findViewById(R.id.myListView);
 
+        //-------------------------------------
         // 準備一個橋接資料及示版型的Adapter物件 
+        //-------------------------------------
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_activated_1,
                 city
         );
 
-        // 將ListView物件連上Adapter物件
-        listView.setAdapter(arrayAdapter);
         //-----------------------------------
+        // 將ListView物件連上Adapter物件
+        //-----------------------------------
+        listView.setAdapter(arrayAdapter);
     }
 
     @Override
