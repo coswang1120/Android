@@ -104,10 +104,10 @@ import android.widget.Toast;
 import com.abc.myapplication.data.*;
 
 public class MainActivity extends AppCompatActivity {
-    //-------------------------------------------------
-    // 設定一個Context物件, 存放目前應用程式的狀態內容
-    //-------------------------------------------------
-    Context context=this;
+    //-------------------------------------------------
+    // 設定一個Context物件, 存放目前應用程式的狀態內容
+    //-------------------------------------------------
+    Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,9 +130,9 @@ public class MainActivity extends AppCompatActivity {
         //-----------------------------------
         ListView listView=(ListView)findViewById(R.id.myListView);
 
-        //---------------------------------------
-        // 準備一個橋接資料及示版型的Adapter物件 
-        //---------------------------------------
+        //---------------------------------------
+        // 準備一個橋接資料及示版型的Adapter物件
+        //---------------------------------------
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_activated_1,
@@ -143,11 +143,11 @@ public class MainActivity extends AppCompatActivity {
         // 將ListView物件連上Adapter物件
         //-----------------------------------
         listView.setAdapter(arrayAdapter);
- 
-        //-----------------------
-        // 清單上的項目被點擊時
-        //-----------------------
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        //-----------------------
+        // 清單上的項目被點擊時
+        //-----------------------
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(context, City.names[position], Toast.LENGTH_SHORT).show();
