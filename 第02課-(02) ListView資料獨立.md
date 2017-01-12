@@ -126,19 +126,19 @@ public class MainActivity extends AppCompatActivity {
         //-----------------------------------
         ListView listView=(ListView)findViewById(R.id.myListView);
 
-        //---------------------------------------
+        //---------------------------------------
         // 準備一個橋接資料及示版型的Adapter物件 
-        //---------------------------------------
+        //---------------------------------------
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_activated_1,
                 City.names
         );
-        
+
         //-----------------------------------
         // 將ListView物件連上Adapter物件
         //-----------------------------------
-        listView.setAdapter(arrayAdapter);        
+        listView.setAdapter(arrayAdapter);
     }
 
     @Override
