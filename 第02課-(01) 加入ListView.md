@@ -33,9 +33,7 @@ Nexus 5, API 23
    |     |
    |     |___<com.abc.myapplication>
    |            |___MainActivity.java		 
-   |  
    |___<res>
-   |     |
          |___<layout>
                 |___content_main.xml                				
 ```
