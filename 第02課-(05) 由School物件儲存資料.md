@@ -34,9 +34,7 @@ Nexus 5, API 23
    |     |___<com.abc.myapplication>
    |     |      |
    |            |___<data>	
-   |            |     |
    |            |     |___Common.java
-   |            |     |
    |            |     |___School.java
    |            |
    |            |___MainActivity.java	   
@@ -44,7 +42,6 @@ Nexus 5, API 23
    |___<res>
    |     |
          |___<layout>
-         |      |
                 |___content_main.xml                				
 ```
 
@@ -64,9 +61,9 @@ Nexus 5, API 23
 
     <!-- 加入一個ListView物件 -->
     <ListView
+        android:id="@+id/myListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/myListView"/>
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
 ```
 
