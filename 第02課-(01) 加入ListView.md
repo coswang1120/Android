@@ -1,7 +1,7 @@
-#第01課 介面設計
+#第02課 介面設計
 
 
-## (2) 加入ListView
+## (1) 加入ListView
 
 
 #####執行結果:
@@ -83,8 +83,8 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
     //--------------------
-    // 加入一個字串陣列
-    //--------------------
+    // 字串陣列資料
+    //--------------------
     private String[] city = {"基隆","台北","新北","桃園","新竹","苗栗", "台南", "高雄"};
 
     @Override
@@ -106,15 +106,18 @@ public class MainActivity extends AppCompatActivity {
         //-----------------------------------
         // 將字串陣列內容加入ListView物件中
         //-----------------------------------
-        ListView listView=(ListView)findViewById(R.id.myListView);
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
+        // 準備一個顯示資料的ListView物件
+        ListView listView=(ListView)findViewById(R.id.myListView);
+ 
+        // 準備一個橋接資料及示版型的Adapter物件 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_activated_1,
                 city
         );
 
-        listView.setAdapter(arrayAdapter);
+        // 將ListView物件連上Adapter物件
+        listView.setAdapter(arrayAdapter);
         //-----------------------------------
     }
 
