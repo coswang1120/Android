@@ -30,17 +30,13 @@ Nexus 5, API 23
  app 
    | 
    |___<java>
-   |     |
    |     |___<com.abc.myapplication>
-   |     |      |
    |            |___<data>	
    |            |     |___Common.java
    |            |     |___School.java
    |            |
-   |            |___MainActivity.java	   
-   |  
+   |            |___MainActivity.java	 
    |___<res>
-   |     |
          |___<layout>
                 |___content_main.xml                				
 ```
