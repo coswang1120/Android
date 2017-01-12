@@ -1,7 +1,7 @@
-#第01課 介面設計
+#第02課 加入ListView清單
 
 
-## (4) 加入ListView及點撃
+## (3) ListView資料項目點撃
 
 
 #####執行結果:
@@ -73,6 +73,9 @@ Nexus 5, API 23
 ```java
 package com.abc.myapplication.data;
 
+//-----------------------
+// 獨立存在的靜態字串
+//-----------------------
 public class City {
     public static String[] names =
            new String[]{"基隆","台北","新北","桃園","新竹","苗栗", "台南", "高雄", "屏東"};
@@ -101,10 +104,10 @@ import android.widget.Toast;
 import com.abc.myapplication.data.*;
 
 public class MainActivity extends AppCompatActivity {
-    //----------------------
-    // 設定一個Context物件
-    //----------------------
-    Context context=this;
+    //-------------------------------------------------
+    // 設定一個Context物件, 存放目前應用程式的狀態內容
+    //-------------------------------------------------
+    Context context=this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
