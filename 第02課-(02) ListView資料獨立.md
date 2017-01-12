@@ -1,7 +1,8 @@
-#第01課 介面設計
+#第02課 加入ListView清單
 
 
-## (3) 加入ListView
+## (2) ListView資料獨立
+
 
 
 #####執行結果:
@@ -73,6 +74,9 @@ Nexus 5, API 23
 ```java
 package com.abc.myapplication.data;
 
+//-----------------------------------
+// 將資料設定於程式外, 有助於程式維護
+//-----------------------------------
 public class City {
     public static String[] names =
            new String[]{"基隆","台北","新北","桃園","新竹","苗栗", "台南", "高雄", "屏東"};
@@ -118,18 +122,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //-----------------------------------
-        // 將字串陣列內容加入ListView物件中
+        // 準備一個顯示資料的ListView物件
         //-----------------------------------
         ListView listView=(ListView)findViewById(R.id.myListView);
 
+        //---------------------------------------
+        // 準備一個橋接資料及示版型的Adapter物件 
+        //---------------------------------------
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_activated_1,
                 City.names
         );
-
-        listView.setAdapter(arrayAdapter);
+        
         //-----------------------------------
+        // 將ListView物件連上Adapter物件
+        //-----------------------------------
+        listView.setAdapter(arrayAdapter);        
     }
 
     @Override
