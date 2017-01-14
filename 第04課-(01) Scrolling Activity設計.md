@@ -108,7 +108,6 @@ Nexus 5, API 23
 #####檔案名稱: styles.xml
 ```xml
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
