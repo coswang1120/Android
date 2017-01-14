@@ -16,14 +16,14 @@ Nexus 5, API 23
 
 
 
-#####建立專案設定
+#####icon 資源
 ```
 Google Material icons: https://material.io/icons/
 ```
 
 
 
-#####icon 資源
+#####建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
