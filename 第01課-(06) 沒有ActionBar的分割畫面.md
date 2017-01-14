@@ -1,0 +1,332 @@
+#第01課 介面設計
+
+
+## (6) 沒有ActionBar的分割畫面
+
+
+#####執行結果:
+![GitHub Logo](/images/results01-6.jpg)
+
+
+
+#####模擬器
+```
+Nexus 5, API 23
+```
+
+
+
+#####建立專案設定
+```
+(1) Company Domain: abc.com 
+(2) Minimum SDK: API 21: Android 5.0(Lollipop)
+(3) 選用 Empty Activity
+```
+
+
+
+#####檔案放置方式:
+```
+ app 
+   |___<java>
+         |___<com.abc.myapplication>
+         |        |___MainActivity.java		 
+         |    
+       <res>
+         |___<drawable>
+         |       |___icon200.jpg   (尺寸: 200px*200px)		 
+         |       |___imgbox1.xml
+         |       |___imgbox2.xml
+         |       |___imgbox3.xml
+         |       |___imgbox4.xml		 
+         | 	   
+         |___<layout>
+         |       |___activity_main.xml
+         | 	 
+         |___<values>
+         |       |___colors.xml  
+         |       |
+         |       |___<dimens.xml(2)> 
+         |       |        |___dimens.xml  		 
+         |       |
+         |       |___<styles.xml(2)> 
+         |                |___styles.xml  		 
+```
+
+
+#####檔案名稱: imgbox1.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000" />
+        </shape>
+    </item>
+    <item android:right="3dp" android:bottom="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#f00" />
+        </shape>
+    </item>
+</layer-list>
+```
+
+
+
+#####檔案名稱: imgbox2.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000" />
+        </shape>
+    </item>
+    <item android:left="3dp" android:bottom="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ff0" />
+        </shape>
+    </item>
+</layer-list>
+```
+
+
+
+#####檔案名稱: imgbox3.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000" />
+        </shape>
+    </item>
+    <item android:right="3dp" android:top="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#0f0" />
+        </shape>
+    </item>
+</layer-list>
+```
+
+
+
+#####檔案名稱: imgbox4.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000" />
+        </shape>
+    </item>
+    <item android:left="3dp" android:top="3dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#00f" />
+        </shape>
+    </item>
+</layer-list>
+```
+
+
+
+#####檔案名稱: colors.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4a0f00</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#4a0f00</color>
+    <color name="windowBackground">#4a0f00</color>
+    <color name="textColorPrimary">#f85a30</color>
+    <color name="textColor">#f85a30</color>
+</resources>
+```
+
+
+
+#####檔案名稱: dimens.xml
+```xml
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">0dp</dimen>
+    <dimen name="activity_vertical_margin">0dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+</resources>
+```
+
+
+
+#####檔案名稱: styles.xml
+```xml
+<resources>
+
+    <!-- 沒有ActionBar的版型 -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>
+```
+
+
+
+#####檔案名稱: activity_main.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.abc.myapplication.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true">
+
+        <!-- 第1個橫列 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/imgbox1"
+                android:id="@+id/imageView1" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/imgbox2"
+                android:id="@+id/imageView2" />
+        </LinearLayout>
+
+
+        <!-- 第2個橫列 -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/imgbox3"
+                android:id="@+id/imageView3" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/imgbox4"
+                android:id="@+id/imageView4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 圓心 -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#0000"
+        android:id="@+id/imageView5" />
+</RelativeLayout>
+```
+
+
+
+#####檔案名稱: MainActivity.java
+```java
+package com.abc.myapplication;
+
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //---------------------------------------------
+        // 將imageView圖片轉為圓形, 加上邊線及陰影
+        //---------------------------------------------
+        ImageView imageView = (ImageView) findViewById(R.id.imageView5);
+        circleImageView(imageView, R.drawable.icon200);
+    }
+
+    //-------------------------------------------------------------------------------------------
+    // 將圖片加邊框, 陰影
+    // 參考來源:
+    // https://android--examples.blogspot.tw/2015/11/android-circular-imageview-with-border.html
+    //-------------------------------------------------------------------------------------------
+    public void circleImageView(ImageView imageView, int drawablePic){
+        // 邊框, 影子寬度
+        int borderWidth = 20;
+        int shadowWidth = 0;
+
+        // 邊框, 影子顏色
+        int borderColor=Color.BLACK;
+        int shadowColor=Color.DKGRAY;
+
+        // 取得圖片
+        Resources mResources = getResources();
+        Bitmap srcBitmap = BitmapFactory.decodeResource(mResources, drawablePic);
+
+        // 以圖片大小為尺寸, 建立一塊畫布
+        int srcBitmapWidth = srcBitmap.getWidth();
+        int srcBitmapHeight = srcBitmap.getHeight();
+        int dstBitmapWidth = Math.min(srcBitmapWidth,srcBitmapHeight)+borderWidth*2;
+        Bitmap dstBitmap = Bitmap.createBitmap(dstBitmapWidth,dstBitmapWidth, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(dstBitmap);
+        canvas.drawColor(Color.YELLOW);
+        canvas.drawBitmap(srcBitmap, (dstBitmapWidth - srcBitmapWidth) / 2, (dstBitmapWidth - srcBitmapHeight) / 2, null);
+
+        // 在畫布上畫邊線
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(borderWidth * 2);
+        paint.setColor(borderColor);
+        canvas.drawCircle(canvas.getWidth() / 2, canvas.getHeight() / 2, canvas.getWidth() / 2, paint);
+
+        // 在畫布上畫影子
+        paint.setColor(shadowColor);
+        paint.setStrokeWidth(shadowWidth);
+        canvas.drawCircle(canvas.getWidth()/2,canvas.getHeight()/2,canvas.getWidth()/2,paint);
+
+        // 將圖片切圓角
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(mResources, dstBitmap);
+        roundedBitmapDrawable.setCircular(true);
+
+        // 將轉好的圖貼在imageView中
+        imageView.setImageDrawable(roundedBitmapDrawable);
+    }
+}
+```
