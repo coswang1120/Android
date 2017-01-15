@@ -38,6 +38,8 @@ Nexus 5, API 23
          |___<values>
          |      |___colors.xml  
          |      |
+         |      |___dimens.xml  
+         |      |         
          |      |___strings.xml
          |      |
          |      |___<styles.xml(2)> 
@@ -56,6 +58,17 @@ Nexus 5, API 23
     <color name="textColor">#fff</color>
     <color name="iconTextFront">#ff0000</color>
     <color name="iconTextEnd">#ffaaaa</color>
+</resources>
+```
+
+
+
+```xml
+<!-- 表頭高度改為250dp -->
+<resources>
+    <dimen name="app_bar_height">250dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
 ```
 
