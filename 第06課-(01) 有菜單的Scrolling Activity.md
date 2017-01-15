@@ -1,0 +1,510 @@
+#第06課 有菜單的 Scrolling Activity 設計
+
+
+## (1) 有菜單的Scrolling Activity
+
+
+#####執行結果:
+![GitHub Logo](/images/results06-1.jpg)
+
+
+
+#####模擬器
+```
+Nexus 5, API 23
+```
+
+
+
+#####建立專案設定
+```
+(1) Company Domain: abc.com 
+(2) Minimum SDK: API 21: Android 5.0(Lollipop)
+(3) 選用 Scrolling Activity
+```
+
+
+
+#####檔案放置方式:
+```
+ app 
+   |___<java>
+         |___<com.abc.myapplication>
+         |      |___<listener>
+         |      |        |___MyOnClickListener.java 
+		 |      |
+         |      |___ScrollingActivity.java
+		 |
+         |___<layout>
+         |      |___activity_scrolling.xml	 
+   |___<res>
+         |___<drawable>
+		 |      |___circle.xml	
+		 |      |___icon400.jpg  (尺寸: 400px*400px)	
+         |      |___logo48.png   (尺寸: 48px*48px)	 
+         |    
+         |___<layout>
+         |      |___activity_scrolling.xml		
+         |      |___content_scrolling.xml	
+         | 	 
+         |___<values>
+         |      |___colors.xml  
+         |      |
+         |      |___dimens.xml  
+         |      |         
+         |      |___strings.xml
+         |      |
+         |      |___<styles.xml(2)> 
+         |               |___styles.xml  		 
+```
+
+
+
+#####檔案名稱: circle.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="0dp"
+    android:shape="ring"
+    android:thicknessRatio="4.5"
+    android:useLevel="false" >
+
+    <solid android:color="@color/fillColor" />
+
+    <stroke
+        android:width="0dp"
+        android:color="@color/borderColor"
+        android:dashGap="0dp"
+        android:dashWidth="0dp"/>
+</shape>
+```
+
+
+#####檔案名稱: colors.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#550000</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#ffaaaa</color>
+    <color name="windowBackground">#000</color>
+    <color name="textColor">#fff</color>
+    <color name="iconTextFront">#ff0000</color>
+    <color name="iconTextEnd">#ffaaaa</color>
+    <color name="borderColor">#ffaaaa</color>
+    <color name="fillColor">#aa3939</color>
+</resources>
+```
+
+
+
+#####檔案名稱: dimens.xml
+```xml
+<!-- 表頭高度改為250dp -->
+<resources>
+    <dimen name="app_bar_height">250dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="menuTextSize">18dp</dimen>
+</resources>
+```
+
+
+
+#####檔案名稱: strings.xml
+```xml
+<resources>
+    <string name="app_name"></string>
+    <string name="action_settings">Settings</string>
+    <string name="logo">商標圖示</string>
+
+    <string name="large_text">
+        "蔣勳：過得像個人，才能看到美\n\n\n"
+
+        "蔣勳曾說自己是用佈道的心情傳播對美的感動，現在他已經可說是美的宗教家。近幾年來，蔣勳走遍竹科與各地演講，到場的聽眾們彷彿都期待受到「開釋」，除了在席間對於充滿抑揚頓挫的感性分析頻頻點頭，發問的許多也都是已超乎美學的人生之問。事實上，這幾年來，蔣勳談的美，也有很大的變化。他過去比較偏向幫助大家賞析藝術之美，但他在與聽眾愈來愈多的互動中發現，許多上班族的餘暇時間已極度有限了，刻意附庸風雅地去欣賞音樂會、畫展已經沒有必要，重拾與周遭人的感情，重新找回「像個人樣」的生活方式，才能對美真正有所體會。本期美學學院專訪蔣勳，分享上班族也可以找回的生活之美。\n\n\n"
+
+
+        "真正的美，作假不得\n\n"
+
+        "幾年來，幾乎所有的竹科企業我都去過了，和企業的人有所接觸後，我才知道我過去有「知識偏執」的狀況，但我並沒有真正認識30歲上下的職場工作人員。竹科有一家上市公司的員工平均年齡是31.8歲，他們都是最優秀大學畢業的菁英。 在開始工作的前10年，是人生很重要的階段，但他們卻通常是11點以後才下班。要戀愛，可能沒有時間戀愛；要買房子，就用世俗的固定模式買房子，找一個大家認為有名的設計師；要結婚，但用很草率的方式結婚。我知道很多工程師經由輔導去娶烏克蘭新娘，他們可能連戀愛的時間、耐心都沒有。\n\n"
+
+        "我原來希望的藝術是能恢復人的品味和人的感覺，但他們接觸了這些東西卻沒有感覺，像有些企業會固定舉辦一些音樂會，但他們卻沒有辦法進入那個世界。所以我現在希望向大家說的是「人的原點」，當我們失去了人的原點，談所有的美都是假的。我有一個朋友，住在信義路上億元的豪宅，找了日本最有名的設計師來裝潢，但有一次我去他家，發現他住了2年，可是廚房裡所有進口廚具的膠膜都沒撕掉。他的房子只是一個showroom。可是家不是showroom，家是讓你可以放鬆自在、活得像人的地方，家是因為住在裡面的人有自己的渴望、自己的感覺，才會有自己的風格。如果主人對這個家沒有意見、對自己的生活沒有看法，只想告訴別人買的是義大利最貴的床，那只是作假給別人看。你可以在家裡放很多明式家具，很美；你喜歡家裡很空，也很美，但這裡面的難度是你到底要什麼，如果你不知道，你找再有名的建築師設計都是假的，你怎麼樣回來做自己，才是最難的功課。\n\n"
+
+        "我自己是住在淡水河邊，當時會在那裡買房子，是因為覺得淡水河口好漂亮，但是我房子的建商卻不知道善用那裡的美景，窗戶建得很小，我在房間裡就覺得好難過。所以我找了一個學建築的學生，他幫我開了12個窗，而且全部是往外推的推窗，比拉窗更有靠近河邊的感覺，還架出一個小陽台，所以我可以坐在小欄杆上看河，和淡水河只有2公尺的距離。我也不喜歡隔間，所以設計師幫我用高度界定出3個不同的區域。我家最高的地方是客廳，朋友來的時候坐在最高的地方喝茶；次高的地方是書房，我在那邊看書；再次高的地方是我的餐廳。我覺得這是我的房子、我的家，我是主人，我知道我要什麼。在穿著上，我喜歡純棉、純麻，因為我覺得它們很溫暖，材料本身有觸覺上的記憶，在排汗、吸汗的過程也非常舒服。加上我喜歡爬山、喜歡躺在草地上、喜歡在海灘捲起褲腳踩水，我喜歡這樣的生活，所以我就有我服裝的特徵，名牌就不適合我，因為我喜歡自在。\n\n\n"
+
+
+        "找回人與人之間的感覺\n\n"
+
+        "我現在不問工程師有沒有去聽音樂、看展覽，反而是問他們：「你們在這裡工作5年了，有沒有人可以告訴我公司門口那一排是什麼樹？」但很少人能夠回答的出來。事實上，他們公司門口那排小葉欖仁的葉子漂亮得不得了，綠色會在陽光裡發亮。後來我再去，就有一個員工和我說，「謝謝你告訴我這件事，我現在下班時會先看看小葉欖仁再回家，所以比較不會和太太吵架了。」他也問我現在5歲的女兒將來該學鋼琴、還是小提琴，但我建議11點下班的他多抱抱女兒，比較重要。\n\n"
+
+        "因為所有的藝術講的都是人的故事，一個孩子如果不記得父親的體溫，她將來看畫、聽音樂都沒有感動。如果沒有人的記憶，所有藝術對她而言都只是賣弄而已。我們從年輕開始，就因為工作忙碌，忽略了人與人的感覺，但工作忙碌之餘，你還是一個人，你必須每分每秒提醒自己回來做人的部份。你看到了美，才會覺得這個世界是值得活下去的。如果你看到的只是品牌、只是假的美，你不見得快樂，那反而可能會是你憂鬱症的原因。找回美的感覺其實很簡單，去觸摸一片葉子，去聞一下在很熱很熱的夏天、下完午後暴雨的氣味，那是都我們有記憶的感覺，那都會引發我們的感觸和感動。\n\n"
+
+        "現在美常常成為新的知識、新的壓力，博士可能毫無美感，但一個不識字的美濃農夫卻可以很美，他看得到月光的美、看得到稻浪翻飛的美。美是最大的財富，它不會因為你的學歷而不同，而是因為你人的部份完不完整而不同。\n\n\n"
+
+
+        "週休二日，回來做自己\n\n"
+
+        "現在台灣過週休二日，好像非要全家去吃一個餐廳、到哪裡去看薰衣草、喝咖啡，全部整套，然後全部的人塞車塞到一肚子氣。我們對休閒的定義是滿僵化的，好像一定要別人服務我們才算是休閒。我自己假日的時候喜歡自己一個人做4菜1湯，因為我覺得做菜好快樂。我也很喜歡在週休二日洗我自己最喜歡的純棉的、純麻的襯衫，絕不丟給洗衣機，因為我覺得觸感好極了。看到它們晾在陽光裡、在風裡飄，白的好漂亮，我的週休二日就很快樂，因為我回來做自己。\n\n"
+
+        "在7、8月，民生東路六段有全台北最漂亮的大花紫薇，即使有車可開，那時候我也絕對要走路，這些是讓我最快樂的事，這才是人。如果我們吃得不像人，穿得不像人，生活都失去了人的意義，那談藝術太遙遠。我談我的生活，並不希望別人學我。每個人是不一樣的，不要隨便相信價格、人云亦云，生活中的美學，應該是不按照別人安排的。每個人應該用自己的生命，去創造自己的生活美學出來。\n\n"
+    </string>
+</resources>
+```
+
+
+
+#####檔案名稱: styles.xml
+```xml
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
+```
+
+
+
+#####檔案名稱: activity_scrolling.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.abc.myapplication.ScrollingActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <!-- 表頭的背景圖, 設定透明度(alpha)及滾動速度(collapseParallaxMultiplier) -->
+            <ImageView
+                android:id="@+id/header_logo"
+                android:src="@drawable/icon400"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_marginBottom="40dp"
+                android:alpha="1"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <!-- 增加一個橫向選單 -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_gravity="bottom"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="horizontal">
+                    <!-- 加入一個icon -->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:contentDescription="@string/logo"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:src="@drawable/logo48"/>
+
+                    <!-- 加入第1個文字 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="L"
+                        android:layout_gravity="left|center"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/iconTextFront" />
+
+                    <!-- 加入第2個文字 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="."
+                        android:layout_gravity="left|center"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/iconTextEnd" />
+
+                    <!-- 加入第3個文字 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="D"
+                        android:layout_gravity="left|center"
+                        android:textSize="30dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/iconTextFront" />
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/btn0"
+                        android:textSize="@dimen/menuTextSize"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="體育"/>
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/btn1"
+                        android:textSize="@dimen/menuTextSize"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="經濟"/>
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/btn2"
+                        android:textSize="@dimen/menuTextSize"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="娛樂"/>
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/btn3"
+                        android:textSize="@dimen/menuTextSize"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="生活"/>
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/btn4"
+                        android:textSize="@dimen/menuTextSize"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="國際"/>
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="50dp"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/btn5"
+                        android:textSize="@dimen/menuTextSize"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:text="新奇"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_scrolling" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email"
+        app:layout_anchor="@id/app_bar"
+        app:layout_anchorGravity="bottom|end" />
+
+</android.support.design.widget.CoordinatorLayout>
+```
+
+
+
+#####檔案名稱: content_scrolling.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.abc.myapplication.ScrollingActivity"
+    tools:showIn="@layout/activity_scrolling">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_margin"
+        android:text="@string/large_text" />
+
+</android.support.v4.widget.NestedScrollView>
+```
+
+
+
+#####檔案名稱: MyOnClickListener.java
+```java
+package com.abc.myapplication.listener;
+
+import android.content.Context;
+import android.graphics.Paint;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.abc.myapplication.R;
+
+
+public class MyOnClickListener implements View.OnClickListener {
+    Context context;
+    Button buttons[];
+    int index;
+
+    public MyOnClickListener(Context context, Button buttons[], int index) {
+        this.context=context;
+        this.buttons=buttons;
+        this.index=index;
+    }
+
+    //------------------------
+    //　設定點擊按鈕顯示
+    //------------------------
+    @Override
+    public void onClick(View view) {
+        clearBtn();
+        buttons[index].setPaintFlags(buttons[index].getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
+        buttons[index].setBackgroundResource(R.drawable.circle);
+
+        Toast.makeText(context, "按鈕"+index+"被點擊", Toast.LENGTH_LONG).show();
+    }
+
+    //------------------------
+    // 清除原button顯示設定
+    //------------------------
+    private void clearBtn(){
+        for(int i=0; i<buttons.length; i++) {
+            buttons[i].setBackgroundResource(0);
+            buttons[i].setPaintFlags(0);
+        }
+    }
+}
+```
+
+
+
+#####檔案名稱: ScrollingActivity.java
+```java
+package com.abc.myapplication;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+
+import com.abc.myapplication.listener.MyOnClickListener;
+
+public class ScrollingActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_scrolling);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
+        //-----------------------
+        // 取得目前的 context
+        //-----------------------
+        Context context;
+        context = this;
+
+
+        //----------------------------
+        // 設定 Button 陣列內容
+        //----------------------------
+        Button buttons[]= {
+                (Button) findViewById(R.id.btn0),
+                (Button) findViewById(R.id.btn1),
+                (Button) findViewById(R.id.btn2),
+                (Button) findViewById(R.id.btn3),
+                (Button) findViewById(R.id.btn4),
+                (Button) findViewById(R.id.btn5)
+        };
+
+
+        //------------------------
+        // 設定 Button 點擊動作
+        //------------------------
+        for(int i=0; i<buttons.length; i++) {
+            buttons[i].setOnClickListener(new MyOnClickListener(context, buttons, i));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_scrolling, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+```
