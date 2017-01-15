@@ -29,15 +29,13 @@ Nexus 5, API 23
 ```
  app 
    |___<java>
-         |___<com.abc.myapplication>
-         |      |___<listener>
-         |      |        |___MyOnClickListener.java 
-         |      |
-         |      |___ScrollingActivity.java
-         |
-         |___<layout>
-         |      |___activity_scrolling.xml	 
-         |___<res>
+   |     |___<com.abc.myapplication>
+   |            |___<listener>
+   |            |       |___MyOnClickListener.java 
+   |            |
+   |            |___ScrollingActivity.java
+   |      
+   |___<res>
          |___<drawable>
          |      |___circle.xml	
          |      |___icon400.jpg  (尺寸: 400px*400px)	
@@ -55,7 +53,7 @@ Nexus 5, API 23
          |      |___strings.xml
          |      |
          |      |___<styles.xml(2)> 
-         |               |___styles.xml  		 
+         |              |___styles.xml  		 
 ```
 
 
