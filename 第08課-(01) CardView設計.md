@@ -86,10 +86,11 @@ Google Material icons: https://material.io/icons/
     <dimen name="activity_horizontal_margin">5dp</dimen>
     <dimen name="activity_vertical_margin">10dp</dimen>
     
-    <!-- 改變fab按鈕位置 -->
+    <!-- fab按鈕位置設定 -->
     <dimen name="fab_margin">6dp</dimen>
     <dimen name="fab_marginBottom">40dp</dimen>
 
+    <!-- 卡片尺寸設定 -->
     <dimen name="textSize">18dp</dimen>
     <dimen name="spaceVertical">6dp</dimen>
     <dimen name="textMargin">10dp</dimen>
