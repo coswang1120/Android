@@ -395,7 +395,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.LifeViewHolder>{
 
 
 
-#####檔案名稱: Life.java
+#####檔案名稱: MainActivity.java
 ```java
 package com.abc.myapplication;
 
