@@ -85,6 +85,8 @@ Google Material icons: https://material.io/icons/
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">5dp</dimen>
     <dimen name="activity_vertical_margin">10dp</dimen>
+    
+    <!-- 改變fab按鈕位置 -->
     <dimen name="fab_margin">6dp</dimen>
     <dimen name="fab_marginBottom">40dp</dimen>
 
