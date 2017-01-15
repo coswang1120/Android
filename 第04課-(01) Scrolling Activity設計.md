@@ -63,6 +63,7 @@ Nexus 5, API 23
 
 
 
+#####檔案名稱: dimens.xml
 ```xml
 <!-- 表頭高度改為250dp -->
 <resources>
