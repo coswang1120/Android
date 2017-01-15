@@ -1,7 +1,7 @@
 #第06課 有菜單的 Scrolling Activity 設計
 
 
-## (1) 有菜單的Scrolling Activity
+## (2) 有菜單的Scrolling Activity
 
 
 #####執行結果:
