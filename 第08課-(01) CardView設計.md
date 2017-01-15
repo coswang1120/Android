@@ -38,16 +38,16 @@ Google Material icons: https://material.io/icons/
    |___<res>
    |     |___<drawable>
    |     |      |___logo48.png       (尺寸: 48px*48px)	
-   |     |      |___picture_01.jpg   (尺寸: 600px*400px)	
-   |     |      |___picture_02.jpg   (尺寸: 600px*400px)
-   |     |      |___picture_03.jpg   (尺寸: 600px*400px)   
+   |     |      |___picture_1.jpg    (尺寸: 600px*400px)	
+   |     |      |___picture_2.jpg    (尺寸: 600px*400px)
+   |     |      |___picture_3.jpg    (尺寸: 600px*400px)   
    |     |    
    |     |___<layout>
    |     |      |___activity_main.xml		 
    |     |      |___content_main.xml
    |     | 	 
    |     |___<values>
-   |     |      |___colors.xml  
+   |            |___colors.xml  
    |            |
    |            |___<dimens.xml(2)> 
    |            |        |___dimens.xml  
