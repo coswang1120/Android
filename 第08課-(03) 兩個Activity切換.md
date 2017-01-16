@@ -480,7 +480,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.LifeViewHolder>{
                 public void onClick(View view) {
                     Context context=view.getContext();
 
-                    // 產生一個折Bundle, 內存CardView的序號
+                    // 產生一個Bundle, 內存CardView的序號
                     Bundle bundle=new Bundle();
                     bundle.putInt("position", position);
 
