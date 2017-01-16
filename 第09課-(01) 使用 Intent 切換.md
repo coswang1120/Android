@@ -1,8 +1,8 @@
-#第09課 兩個Activity切換
+#第09課 使用 Intent 切換
 
 
 
-## (1) 兩個Activity切換
+## (1) 使用 Intent 切換
 
 
 
