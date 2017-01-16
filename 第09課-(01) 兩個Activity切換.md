@@ -182,7 +182,8 @@ Nexus 5, API 23
 
     <include layout="@layout/content_main2" />
 
-    <android.support.design.widget.FloatingActionButton
+    <!-- 用FAB返回原呼叫Activity -->
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -211,6 +212,8 @@ Nexus 5, API 23
     tools:context="com.abc.myapplication.Main2Activity"
     tools:showIn="@layout/activity_main2">
 
+    <!-- 第2個Activity的內容是空的 -->
+    
 </RelativeLayout>
 ```
 
@@ -248,8 +251,6 @@ public class MainActivity extends AppCompatActivity {
         img1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 // 產生一個Intent, 用來轉換Activity
                 Intent intent=new Intent();
 
