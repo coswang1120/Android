@@ -344,7 +344,7 @@ import java.util.ArrayList;
 
 // 用來連結 <CardView> 和 <資料>的調適器
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.LifeViewHolder>{
-    ArrayList<Life> lifes;  //資料
+    ArrayList<Life> lives;  //資料
 
     // 連結資料的CardView及顯示物件
     public static class LifeViewHolder extends RecyclerView.ViewHolder {
@@ -362,13 +362,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.LifeViewHolder>{
     }
 
     // 將連結的資料
-    public MyAdapter(ArrayList<Life> lifes){
-        this.lifes = lifes;
+    public MyAdapter(ArrayList<Life> lives){
+        this.lives = lives;
     }
 
     @Override
     public int getItemCount() {
-        return lifes.size();
+        return lives.size();
     }
 
     @Override
@@ -382,8 +382,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.LifeViewHolder>{
     @Override
     public void onBindViewHolder(LifeViewHolder bookViewHolder, int i) {
         // 顯示資料物件 及 資料項目 的對應
-        bookViewHolder.info_TextView.setText(lifes.get(i).getInfo());
-        bookViewHolder.picture_ImageView.setImageResource(lifes.get(i).getPicture());
+        bookViewHolder.info_TextView.setText(lives.get(i).getInfo());
+        bookViewHolder.picture_ImageView.setImageResource(lives.get(i).getPicture());
     }
 
     @Override
