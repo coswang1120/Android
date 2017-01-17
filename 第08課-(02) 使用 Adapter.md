@@ -58,7 +58,7 @@ Google Material icons: https://material.io/icons/
    |     |      |___mylayout.xml   
    |     | 	 
    |     |___<values>
-   |     |      |___colors.xml  
+   |            |___colors.xml  
    |            |
    |            |___<dimens.xml(2)> 
    |            |        |___dimens.xml  
