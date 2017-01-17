@@ -37,28 +37,24 @@ Nexus 5, API 23
    |      
    |___<res>
          |___<drawable>
-         |      |___circle.xml	
+         |      |___circle_solid.xml	
          |      |___icon400.jpg  (尺寸: 400px*400px)	
-         |      |___logo48.png   (尺寸: 48px*48px)	 
          |    
          |___<layout>
          |      |___activity_scrolling.xml		
-         |      |___content_scrolling.xml	
          | 	 
          |___<values>
-         |      |___colors.xml  
-         |      |
-         |      |___dimens.xml  
-         |      |         
-         |      |___strings.xml
-         |      |
-         |      |___<styles.xml(2)> 
-         |              |___styles.xml  		 
+                |___colors.xml  
+                |
+                |___dimens.xml  
+                |         
+                |___strings.xml
+ 		 
 ```
 
 
 
-#####檔案名稱: circle.xml
+#####檔案名稱: circle_solid.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -69,12 +65,6 @@ Nexus 5, API 23
     android:useLevel="false" >
 
     <solid android:color="@color/fillColor" />
-
-    <stroke
-        android:width="0dp"
-        android:color="@color/borderColor"
-        android:dashGap="0dp"
-        android:dashWidth="0dp"/>
 </shape>
 ```
 
@@ -86,11 +76,7 @@ Nexus 5, API 23
     <color name="colorPrimary">#550000</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#ffaaaa</color>
-    <color name="windowBackground">#000</color>
-    <color name="textColor">#fff</color>
-    <color name="iconTextFront">#ff0000</color>
-    <color name="iconTextEnd">#ffaaaa</color>
-    <color name="borderColor">#ffaaaa</color>
+
     <color name="fillColor">#aa3939</color>
 </resources>
 ```
@@ -104,6 +90,7 @@ Nexus 5, API 23
     <dimen name="app_bar_height">250dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
     <dimen name="menuTextSize">18dp</dimen>
 </resources>
 ```
@@ -113,7 +100,7 @@ Nexus 5, API 23
 #####檔案名稱: strings.xml
 ```xml
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">選單測試</string>
     <string name="action_settings">Settings</string>
     <string name="logo">商標圖示</string>
 
@@ -147,29 +134,6 @@ Nexus 5, API 23
 
         "在7、8月，民生東路六段有全台北最漂亮的大花紫薇，即使有車可開，那時候我也絕對要走路，這些是讓我最快樂的事，這才是人。如果我們吃得不像人，穿得不像人，生活都失去了人的意義，那談藝術太遙遠。我談我的生活，並不希望別人學我。每個人是不一樣的，不要隨便相信價格、人云亦云，生活中的美學，應該是不按照別人安排的。每個人應該用自己的生命，去創造自己的生活美學出來。\n\n"
     </string>
-</resources>
-```
-
-
-
-#####檔案名稱: styles.xml
-```xml
-<resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
 ```
 
@@ -229,43 +193,6 @@ Nexus 5, API 23
                     android:layout_height="50dp"
                     android:background="@color/colorPrimary"
                     android:orientation="horizontal">
-                    <!-- 加入一個icon -->
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:contentDescription="@string/logo"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="left|center"
-                        android:src="@drawable/logo48"/>
-
-                    <!-- 加入第1個文字 -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="L"
-                        android:layout_gravity="left|center"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/iconTextFront" />
-
-                    <!-- 加入第2個文字 -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="."
-                        android:layout_gravity="left|center"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/iconTextEnd" />
-
-                    <!-- 加入第3個文字 -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="D"
-                        android:layout_gravity="left|center"
-                        android:textSize="30dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/iconTextFront" />
 
                     <Button
                         android:layout_width="100dp"
@@ -342,29 +269,6 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: content_scrolling.xml
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.abc.myapplication.ScrollingActivity"
-    tools:showIn="@layout/activity_scrolling">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
-
-</android.support.v4.widget.NestedScrollView>
-```
-
-
-
 #####檔案名稱: MyOnClickListener.java
 ```java
 package com.abc.myapplication.listener;
@@ -396,7 +300,7 @@ public class MyOnClickListener implements View.OnClickListener {
     public void onClick(View view) {
         clearBtn();
         buttons[index].setPaintFlags(buttons[index].getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
-        buttons[index].setBackgroundResource(R.drawable.circle);
+        buttons[index].setBackgroundResource(R.drawable.circle_solid);
 
         Toast.makeText(context, "按鈕"+index+"被點擊", Toast.LENGTH_LONG).show();
     }
