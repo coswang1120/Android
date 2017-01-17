@@ -37,28 +37,28 @@ Nexus 5, API 23
    |      
    |___<res>
          |___<drawable>
-         |      |___circle.xml	
+         |      |___circle_solid.xml	
          |      |___icon400.jpg  (尺寸: 400px*400px)	
-         |      |___logo48.png   (尺寸: 48px*48px)	 
          |    
          |___<layout>
          |      |___activity_scrolling.xml		
-         |      |___content_scrolling.xml	
+         |      |___content_scrolling.xml			 
          | 	 
          |___<values>
-         |      |___colors.xml  
-         |      |
-         |      |___dimens.xml  
-         |      |         
-         |      |___strings.xml
-         |      |
-         |      |___<styles.xml(2)> 
-         |              |___styles.xml  		 
+                |___colors.xml  
+                |
+                |___dimens.xml  
+                |         
+                |___strings.xml
+                |
+                |___<styles.xml(2)> 
+                        |___styles.xml  				
+ 		 
 ```
 
 
 
-#####檔案名稱: circle.xml
+#####檔案名稱: circle_solid.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -69,12 +69,6 @@ Nexus 5, API 23
     android:useLevel="false" >
 
     <solid android:color="@color/fillColor" />
-
-    <stroke
-        android:width="0dp"
-        android:color="@color/borderColor"
-        android:dashGap="0dp"
-        android:dashWidth="0dp"/>
 </shape>
 ```
 
@@ -86,12 +80,9 @@ Nexus 5, API 23
     <color name="colorPrimary">#550000</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#550000</color>
-    <color name="windowBackground">#000</color>
-    <color name="textColor">#fff</color>
-    <color name="iconTextFront">#ff0000</color>
-    <color name="iconTextEnd">#ffaaaa</color>
-    <color name="borderColor">#ffaaaa</color>
+
     <color name="fillColor">#aa3939</color>
+    <color name="textColor">#fff</color>
 </resources>
 ```
 
@@ -104,6 +95,7 @@ Nexus 5, API 23
     <dimen name="app_bar_height">250dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
     <dimen name="menuTextSize">18dp</dimen>
 </resources>
 ```
@@ -113,7 +105,7 @@ Nexus 5, API 23
 #####檔案名稱: strings.xml
 ```xml
 <resources>
-    <string name="app_name">Lin Design</string>
+    <string name="app_name">按鈕捲動測試</string>
     <string name="action_settings">Settings</string>
     <string name="logo">商標圖示</string>
 
@@ -348,8 +340,8 @@ Nexus 5, API 23
             </LinearLayout>
         </HorizontalScrollView>
 
-		
-		<!-- 頁面內容 -->
+
+        <!-- 頁面內容 -->
         <TextView android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
@@ -391,7 +383,7 @@ public class MyOnClickListener implements View.OnClickListener {
     public void onClick(View view) {
         clearBtn();
         buttons[index].setPaintFlags(buttons[index].getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
-        buttons[index].setBackgroundResource(R.drawable.circle);
+        buttons[index].setBackgroundResource(R.drawable.circle_solid);
 
         Toast.makeText(context, "按鈕"+index+"被點擊", Toast.LENGTH_LONG).show();
     }
@@ -435,14 +427,13 @@ public class ScrollingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
+
+        // 設定Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
-            //-----------------------
-            // 回頁面最前端
-            //-----------------------
             @Override
             public void onClick(View view) {
                 NestedScrollView scrollView=(NestedScrollView)findViewById(R.id.myScrollView);
