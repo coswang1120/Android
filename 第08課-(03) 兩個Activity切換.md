@@ -17,13 +17,6 @@ Nexus 5, API 23
 
 
 
-#####icon 資源
-```
-Google Material icons: https://material.io/icons/
-```
-
-
-
 #####建立專案設定
 ```
 (1) Company Domain: abc.com 
