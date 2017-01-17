@@ -162,7 +162,7 @@ dependencies {
 #####檔案名稱: strings.xml
 ```xml
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">卡片測試</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main2">單一項目</string>
 </resources>
