@@ -16,13 +16,6 @@ Nexus 5, API 23
 
 
 
-#####icon 資源
-```
-Google Material icons: https://material.io/icons/
-```
-
-
-
 #####建立專案設定
 ```
 (1) Company Domain: abc.com 
@@ -37,7 +30,6 @@ Google Material icons: https://material.io/icons/
  app 
    |___<res>
    |     |___<drawable>
-   |     |      |___logo48.png       (尺寸: 48px*48px)	
    |     |      |___picture_1.jpg    (尺寸: 600px*400px)	
    |     |      |___picture_2.jpg    (尺寸: 600px*400px)
    |     |      |___picture_3.jpg    (尺寸: 600px*400px)   
@@ -62,6 +54,47 @@ Google Material icons: https://material.io/icons/
 ```
 
 
+
+#####檔案名稱: build.gradle
+```xml
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.abc.myapplication"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //---------------------- 
+    // 增加
+    //----------------------
+    compile 'com.android.support:cardview-v7:25.0.+'
+    compile 'com.android.support:recyclerview-v7:25.0.+'
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+}
+
+```
+
+
+
 #####檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -69,11 +102,9 @@ Google Material icons: https://material.io/icons/
     <color name="colorPrimary">#550000</color>
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#550000</color>
-    <color name="windowBackground">#000</color>
-    <color name="textColor">#000</color>
-    <color name="iconTextFront">#ff0000</color>
-    <color name="iconTextEnd">#ffaaaa</color>
-    <color name="cardBack">#fff</color>
+    <color name="windowBackground">#fff</color>
+    <color name="textColor">#fff</color>
+    <color name="cardBack">#ffdede</color>
 </resources>
 ```
 
@@ -106,7 +137,7 @@ Google Material icons: https://material.io/icons/
 #####檔案名稱: strings.xml
 ```xml
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">卡片測試</string>
     <string name="action_settings">Settings</string>
     <string name="logo">商標圖示</string>
 
@@ -176,47 +207,7 @@ Google Material icons: https://material.io/icons/
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <!-- 加入一個icon -->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:contentDescription="@string/logo"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:src="@drawable/logo48"/>
-
-            <!-- 加入第1個文字 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Lin "
-                android:layout_gravity="left"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:textColor="@color/iconTextFront" />
-
-            <!-- 加入第2個文字 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="D"
-                android:layout_gravity="left"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                android:textColor="@color/iconTextEnd" />
-
-            <!-- 加入第3個文字 -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="esign"
-                android:layout_gravity="left"
-                android:textSize="22dp"
-                android:textStyle="bold"
-                android:textColor="@color/iconTextEnd" />
-        </android.support.v7.widget.Toolbar>
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
     </android.support.design.widget.AppBarLayout>
 
