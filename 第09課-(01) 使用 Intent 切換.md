@@ -231,18 +231,21 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-    //-----------------------------------
-    // 宣告一個存放執行狀態的Context物件
-    //-----------------------------------
-    Context context;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
+    //==========================================================================
+    // 首次載入App時會執行onStart(), 下次App由背景回到前景時也會執行onStart()
+    //==========================================================================
+    @Override
+    protected void onStart() {
+        super.onStart();
+        
         // 存放目前的執行狀態
-        context=this;
+        Context context=this;
 
         //-------------------------------------------
         // 如果第1個畫面被點擊, 切換到下一個Activity
