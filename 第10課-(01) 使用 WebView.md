@@ -355,28 +355,36 @@ public class Main2Activity extends AppCompatActivity {
                 finish();
             }
         });
-
+    }
+    
+    
+    //-----------------------------------------------------------------
+    // 當首次執行及由其他Activity返回時執行onResume()
+    //-----------------------------------------------------------------
+    @Override
+    protected void onResume() {
+        super.onResume();
 		
         //-------------------------
         // 取得傳來Bundle中的參數
         //-------------------------
         Bundle bundle=getIntent().getExtras();
 		
-		//取得網頁地址
+        //取得網頁地址
         String url=bundle.getString("url");  
 
         //-------------------------
         // 顯示網頁內容
-        //-------------------------
-		// 取得顯示網頁物件
+        //-------------------------
+        // 取得顯示網頁物件
         WebView webView = (WebView) findViewById(R.id.webView);
 		
-		// 允許使用java script
+        // 允許使用java script
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-		// 載入網頁
+        // 載入網頁
         webView.loadUrl(url);
-    }
+    }    
 }
 ```
