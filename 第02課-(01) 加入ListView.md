@@ -139,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
         // 將ListView物件連上Adapter物件
         //-----------------------------------
         listView.setAdapter(arrayAdapter);
-    }
-    
+    }    
 }
 ```
