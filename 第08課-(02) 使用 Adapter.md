@@ -397,10 +397,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        //--------------------------
-        initializeData(this);
-        //--------------------------
     }
 
     @Override
@@ -412,19 +408,26 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+
+    //-----------------------------------------------------------------
+    // 當 MainActivity 首次執行及由其他Activity返回時執行onResume()
+    //-----------------------------------------------------------------
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        //-----------------------------------
+        // 資料建立及顯示
+        //-----------------------------------
+        initializeData(this);
+    }
 
 
     //----------------------
