@@ -341,12 +341,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.DataViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(DataViewHolder lifeViewHolder, int i) {
+    public void onBindViewHolder(DataViewHolder dataViewHolder, int i) {
         //---------------------------------
         // 顯示資料物件 及 資料項目 的對應
         //---------------------------------
-        lifeViewHolder.info_TextView.setText(lives.get(i).getInfo());
-        lifeViewHolder.picture_ImageView.setImageResource(lives.get(i).getPicture());
+        dataViewHolder.info_TextView.setText(lives.get(i).getInfo());
+        dataViewHolder.picture_ImageView.setImageResource(lives.get(i).getPicture());
     }
 
     @Override
