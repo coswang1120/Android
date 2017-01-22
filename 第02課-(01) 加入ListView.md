@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     //--------------------
     // 字串陣列資料
     //--------------------
-    private String[] city = {
+    private String[] cultureGroup = {
             "板橋區原住民族發展協進會-新北市板橋區中山路1段1號4樓之1",
             "臺北山舞藝術團-新北市板橋區民生路一段9號20樓",
             "新莊區原住民族發展協進會-新北市新莊區裕民街128號6樓",
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(
                 this,
                 android.R.layout.simple_list_item_activated_1,
-                city
+                cultureGroup
         );
 
         //-----------------------------------
