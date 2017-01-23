@@ -39,7 +39,7 @@ Nexus 5, API 23
    | 
    |___<res>
          |___<layout>
-         |      |___content_main2.xml   
+         |      |___content_main.xml   
          | 	 
          |___<values>
                 |___colors.xml  
