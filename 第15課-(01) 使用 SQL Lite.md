@@ -129,7 +129,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: DBHelper.java
+#####檔案名稱: MyDBHelper.java
 ```java
 package com.abc.myapplication.db;
 
