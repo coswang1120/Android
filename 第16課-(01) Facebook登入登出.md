@@ -46,8 +46,9 @@ Nexus 5, API 23
 c:
 cd\openssl
 
-執行:
-keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64  命令,
+在命令題示字元中執行:
+keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
+
 輸入密碼後會產生一個28個字元的離湊金鑰(hash code).
 (*如果找不到 keytool 命令, 它在 <java>中的<bin> 內)
 
