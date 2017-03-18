@@ -1,22 +1,22 @@
-#第02課 加入ListView清單
+# 第02課 加入ListView清單
 
 
 ## (1) 加入ListView
 
 
-#####執行結果:
+##### 執行結果:
 ![GitHub Logo](/images/results02-1.jpg)
 
 
 
-#####模擬器
+##### 模擬器
 ```
 Nexus 5, API 23
 ```
 
 
 
-#####建立專案設定
+##### 建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
@@ -25,7 +25,7 @@ Nexus 5, API 23
 
 
 
-#####檔案放置方式:
+##### 檔案放置方式:
 ```
  app 
    | 
@@ -44,7 +44,7 @@ Nexus 5, API 23
 ```
 
 
-#####檔案名稱: colors.xml
+##### 檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -56,7 +56,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: dimens.xml
+##### 檔案名稱: dimens.xml
 ```xml
 <resources>
     <!-- 修改了margin -->
@@ -69,7 +69,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: content_main.xml
+##### 檔案名稱: content_main.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -91,7 +91,7 @@ Nexus 5, API 23
 ```
 
 
-#####檔案名稱: MainActivity.java
+##### 檔案名稱: MainActivity.java
 ```java
 package com.abc.myapplication;
 
