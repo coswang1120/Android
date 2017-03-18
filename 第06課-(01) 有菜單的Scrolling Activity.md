@@ -1,22 +1,22 @@
-#第06課 有菜單的 Scrolling Activity 設計
+# 第06課 有菜單的 Scrolling Activity 設計
 
 
 ## (1) 有菜單的Scrolling Activity
 
 
-#####執行結果:
+##### 執行結果:
 ![GitHub Logo](/images/results06-1.jpg)
 
 
 
-#####模擬器
+##### 模擬器
 ```
 Nexus 5, API 23
 ```
 
 
 
-#####建立專案設定
+##### 建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
@@ -25,7 +25,7 @@ Nexus 5, API 23
 
 
 
-#####檔案放置方式:
+##### 檔案放置方式:
 ```
  app 
    |___<java>
@@ -53,7 +53,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: circle_solid.xml
+##### 檔案名稱: circle_solid.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -68,7 +68,7 @@ Nexus 5, API 23
 ```
 
 
-#####檔案名稱: colors.xml
+##### 檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -82,7 +82,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: dimens.xml
+##### 檔案名稱: dimens.xml
 ```xml
 <!-- 表頭高度改為250dp -->
 <resources>
@@ -96,7 +96,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: strings.xml
+##### 檔案名稱: strings.xml
 ```xml
 <resources>
     <string name="app_name">選單測試</string>
@@ -138,7 +138,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: activity_scrolling.xml
+##### 檔案名稱: activity_scrolling.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -268,7 +268,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: MyOnClickListener.java
+##### 檔案名稱: MyOnClickListener.java
 ```java
 package com.abc.myapplication.listener;
 
@@ -318,7 +318,7 @@ public class MyOnClickListener implements View.OnClickListener {
 
 
 
-#####檔案名稱: ScrollingActivity.java
+##### 檔案名稱: ScrollingActivity.java
 ```java
 package com.abc.myapplication;
 
