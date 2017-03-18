@@ -1,4 +1,4 @@
-#第16課 Facebook登入登出
+# 第16課 Facebook登入登出
 
 
 
@@ -6,19 +6,19 @@
 
 
 
-#####執行結果:
+##### 執行結果:
 ![GitHub Logo](/images/results16-1.jpg)
 
 
 
-#####模擬器
+##### 模擬器
 ```
 Nexus 5, API 23
 ```
 
 
 
-#####建立專案設定
+##### 建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
@@ -27,12 +27,12 @@ Nexus 5, API 23
 
 
 
-#####在Facebook建立應用程式畫面:
+##### 在Facebook建立應用程式畫面:
 ![GitHub Logo](/images/fig16-1.jpg)
 
 
 
-#####在Facebook建立應用程式說明
+##### 在Facebook建立應用程式說明
 ```
 (1)
 在 https://developers.facebook.com/ 網址中建立一個應用程式, 此應用程式將有一個應用程式編號.
@@ -63,7 +63,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 
 
-#####檔案放置方式:
+##### 檔案放置方式:
 ```
  <app> 
    |___<manifests>
@@ -89,7 +89,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 
 
-#####檔案名稱: build.gradle
+##### 檔案名稱: build.gradle
 ```
 apply plugin: 'com.android.application'
 
@@ -131,7 +131,7 @@ dependencies {
 
 
 
-#####檔案名稱: AndroidManifest.xml
+##### 檔案名稱: AndroidManifest.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -178,7 +178,7 @@ dependencies {
 
 
 
-#####檔案名稱: colors.xml
+##### 檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -190,7 +190,7 @@ dependencies {
 
 
 
-#####檔案名稱: strings.xml
+##### 檔案名稱: strings.xml
 ```xml
 <resources>
     <string name="app_name">My Application</string>
@@ -201,7 +201,7 @@ dependencies {
 
 
 
-#####檔案名稱: content_main.xml
+##### 檔案名稱: content_main.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -229,7 +229,7 @@ dependencies {
 
 
 
-#####檔案名稱: MainActivity.java
+##### 檔案名稱: MainActivity.java
 ```java
 package com.abc.myapplication;
 
