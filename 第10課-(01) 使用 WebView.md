@@ -1,4 +1,4 @@
-#第10課 使用 WebView
+# 第10課 使用 WebView
 
 
 
@@ -6,19 +6,19 @@
 
 
 
-#####執行結果:
+##### 執行結果:
 ![GitHub Logo](/images/results10-1.jpg)
 
 
 
-#####模擬器
+##### 模擬器
 ```
 Nexus 5, API 23
 ```
 
 
 
-#####建立專案設定
+##### 建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
@@ -27,7 +27,7 @@ Nexus 5, API 23
 
 
 
-#####檔案放置方式:
+##### 檔案放置方式:
 ```
  app 
    |___<manifests>
@@ -56,7 +56,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: AndroidManifest.xml
+##### 檔案名稱: AndroidManifest.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -90,7 +90,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: colors.xml
+##### 檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -108,7 +108,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: dimens.xml
+##### 檔案名稱: dimens.xml
 ```xml
 <resources>
     <dimen name="activity_horizontal_margin">0dp</dimen>
@@ -126,7 +126,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: strings.xml
+##### 檔案名稱: strings.xml
 ```xml
 <resources>
     <string name="app_name">第1個Activity</string>
@@ -136,7 +136,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: activity_main.xml
+##### 檔案名稱: activity_main.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -198,7 +198,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: activity_main2.xml
+##### 檔案名稱: activity_main2.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -239,7 +239,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: content_main2.xml
+##### 檔案名稱: content_main2.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -267,7 +267,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: MainActivity.java
+##### 檔案名稱: MainActivity.java
 ```java
 package com.abc.myapplication;
 
@@ -330,7 +330,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-#####檔案名稱: Main2Activity.java
+##### 檔案名稱: Main2Activity.java
 ```java
 package com.abc.myapplication;
 
