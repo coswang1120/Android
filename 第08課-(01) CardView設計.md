@@ -1,22 +1,22 @@
-#第08課 CardView設計
+# 第08課 CardView設計
 
 
 ## (1) CardView設計
 
 
-#####執行結果:
+##### 執行結果:
 ![GitHub Logo](/images/results08-1.jpg)
 
 
 
-#####模擬器
+##### 模擬器
 ```
 Nexus 5, API 23
 ```
 
 
 
-#####建立專案設定
+##### 建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
@@ -25,7 +25,7 @@ Nexus 5, API 23
 
 
 
-#####檔案放置方式:
+##### 檔案放置方式:
 ```
  app 
    |___<res>
@@ -51,7 +51,7 @@ Nexus 5, API 23
 
 
 
-#####檔案名稱: build.gradle
+##### 檔案名稱: build.gradle
 ```xml
 apply plugin: 'com.android.application'
 
@@ -91,7 +91,7 @@ dependencies {
 
 
 
-#####檔案名稱: colors.xml
+##### 檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -106,7 +106,7 @@ dependencies {
 
 
 
-#####檔案名稱: dimens.xml
+##### 檔案名稱: dimens.xml
 ```xml
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
@@ -130,7 +130,7 @@ dependencies {
 
 
 
-#####檔案名稱: strings.xml
+##### 檔案名稱: strings.xml
 ```xml
 <resources>
     <string name="app_name">卡片測試</string>
@@ -153,7 +153,7 @@ dependencies {
 
 
 
-#####檔案名稱: content_main.xml
+##### 檔案名稱: content_main.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
