@@ -1,30 +1,30 @@
-#第08課 CardView設計
+# 第08課 CardView設計
 
 
 ## (2) 使用 Adapter
 
 
 
-#####執行結果:
+##### 執行結果:
 ![GitHub Logo](/images/results08-2.jpg)
 
 
 
-#####模擬器
+##### 模擬器
 ```
 Nexus 5, API 23
 ```
 
 
 
-#####icon 資源
+##### icon 資源
 ```
 Google Material icons: https://material.io/icons/
 ```
 
 
 
-#####建立專案設定
+##### 建立專案設定
 ```
 (1) Company Domain: abc.com 
 (2) Minimum SDK: API 21: Android 5.0(Lollipop)
@@ -33,7 +33,7 @@ Google Material icons: https://material.io/icons/
 
 
 
-#####檔案放置方式:
+##### 檔案放置方式:
 ```
  app 
    |___<java>
@@ -71,7 +71,7 @@ Google Material icons: https://material.io/icons/
 
 
 
-#####檔案名稱: build.gradle
+##### 檔案名稱: build.gradle
 ```
 apply plugin: 'com.android.application'
 
@@ -110,7 +110,7 @@ dependencies {
 
 
 
-#####檔案名稱: colors.xml
+##### 檔案名稱: colors.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -125,7 +125,7 @@ dependencies {
 
 
 
-#####檔案名稱: dimens.xml
+##### 檔案名稱: dimens.xml
 ```xml
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
@@ -149,7 +149,7 @@ dependencies {
 
 
 
-#####檔案名稱: strings.xml
+##### 檔案名稱: strings.xml
 ```xml
 <resources>
     <string name="app_name">卡片測試</string>
@@ -159,7 +159,7 @@ dependencies {
 
 
 
-#####檔案名稱: content_main.xml
+##### 檔案名稱: content_main.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -187,7 +187,7 @@ dependencies {
 
 
 
-#####檔案名稱: mylayout.xml
+##### 檔案名稱: mylayout.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -229,7 +229,7 @@ dependencies {
 
 
 
-#####檔案名稱: Common.java
+##### 檔案名稱: Common.java
 ```java
 package com.abc.myapplication.data;
 
@@ -254,7 +254,7 @@ public class Common {
 
 
 
-#####檔案名稱: Life.java
+##### 檔案名稱: Life.java
 ```java
 package com.abc.myapplication.data;
 
@@ -274,7 +274,7 @@ public class Life {
 
 
 
-#####檔案名稱: MyAdapter.java
+##### 檔案名稱: MyAdapter.java
 ```java
 package com.abc.myapplication.adapter;
 
@@ -358,7 +358,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.DataViewHolder>{
 
 
 
-#####檔案名稱: MainActivity.java
+##### 檔案名稱: MainActivity.java
 ```java
 package com.abc.myapplication;
 
